@@ -16,3 +16,6 @@ resetProject:
 	flutter pub get
 	flutter pub upgrade
 	cd ios && pod install --repo-update
+
+intlGenerate:
+	dart run intl_utils:generate

@@ -43,8 +43,9 @@ dependencies:
   flutter_bloc: ^9.1.1
   camera: ^0.11.3
   built_value: ^8.12.3
-  collection: ^1.19.1
   permission_handler: ^12.0.1
+  path_provider: ^2.1.5
+  native_exif: ^0.6.2
 
 dev_dependencies:
   flutter_test:

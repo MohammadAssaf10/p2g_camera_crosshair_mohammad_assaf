@@ -28,6 +28,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "cameraPermissionRequired": MessageLookupByLibrary.simpleMessage(
       "Camera Permission Required",
     ),
+    "captureResult": MessageLookupByLibrary.simpleMessage("Capture Result"),
+    "exifOrientation": MessageLookupByLibrary.simpleMessage("EXIF ORIENTATION"),
+    "fileSize": MessageLookupByLibrary.simpleMessage("FILE SIZE"),
+    "imageMetadata": MessageLookupByLibrary.simpleMessage("IMAGE METADATA"),
     "openSettings": MessageLookupByLibrary.simpleMessage("Open Settings"),
+    "orientationDown": MessageLookupByLibrary.simpleMessage("Down (180°)"),
+    "orientationDownMirrored": MessageLookupByLibrary.simpleMessage(
+      "Down, Mirrored",
+    ),
+    "orientationLeft": MessageLookupByLibrary.simpleMessage("Left (270°)"),
+    "orientationLeftMirrored": MessageLookupByLibrary.simpleMessage(
+      "Left, Mirrored",
+    ),
+    "orientationRight": MessageLookupByLibrary.simpleMessage("Right (90°)"),
+    "orientationRightMirrored": MessageLookupByLibrary.simpleMessage(
+      "Right, Mirrored",
+    ),
+    "orientationUp": MessageLookupByLibrary.simpleMessage("Up (0°)"),
+    "orientationUpMirrored": MessageLookupByLibrary.simpleMessage(
+      "Up, Mirrored",
+    ),
+    "resolution": MessageLookupByLibrary.simpleMessage("RESOLUTION"),
+    "retakePhoto": MessageLookupByLibrary.simpleMessage("Retake Photo"),
+    "storagePath": MessageLookupByLibrary.simpleMessage("STORAGE PATH"),
+    "timestamp": MessageLookupByLibrary.simpleMessage("TIMESTAMP"),
   };
 }

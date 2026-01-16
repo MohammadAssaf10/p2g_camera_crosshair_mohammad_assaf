@@ -4,9 +4,12 @@ import 'package:built_value/built_value.dart';
 import 'package:camera/camera.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../../core/utils/app_enums.dart';
+
 part 'camera_state.g.dart';
 
 abstract class CameraState implements Built<CameraState, CameraStateBuilder> {
+  BlocStatus get status;
   PermissionStatus? get cameraPermissionStatus;
   bool get isCameraInitialized;
   FlashMode get flashMode;
@@ -22,6 +25,7 @@ abstract class CameraState implements Built<CameraState, CameraStateBuilder> {
       ..isCameraInitialized = false
       ..flashMode = FlashMode.off
       ..currentLensDirection = CameraLensDirection.back
-      ..capturedImage = null,
+      ..capturedImage = null
+      ..status = BlocStatus.initial,
   );
 }
