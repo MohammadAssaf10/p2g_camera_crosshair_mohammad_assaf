@@ -31,8 +31,8 @@ class Crosshair extends StatelessWidget {
         ),
         Center(
           child: Container(
-            width: 5,
-            height: 5,
+            width: 3,
+            height: 3,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.transparent,

@@ -318,4 +318,59 @@ class ToggleDiagnosticsBuilder
   }
 }
 
+class _$ToggleGridMode extends ToggleGridMode {
+  factory _$ToggleGridMode([void Function(ToggleGridModeBuilder)? updates]) =>
+      (ToggleGridModeBuilder()..update(updates))._build();
+
+  _$ToggleGridMode._() : super._();
+  @override
+  ToggleGridMode rebuild(void Function(ToggleGridModeBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  ToggleGridModeBuilder toBuilder() => ToggleGridModeBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is ToggleGridMode;
+  }
+
+  @override
+  int get hashCode {
+    return 245734147;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'ToggleGridMode').toString();
+  }
+}
+
+class ToggleGridModeBuilder
+    implements Builder<ToggleGridMode, ToggleGridModeBuilder> {
+  _$ToggleGridMode? _$v;
+
+  ToggleGridModeBuilder();
+
+  @override
+  void replace(ToggleGridMode other) {
+    _$v = other as _$ToggleGridMode;
+  }
+
+  @override
+  void update(void Function(ToggleGridModeBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  ToggleGridMode build() => _build();
+
+  _$ToggleGridMode _build() {
+    final _$result = _$v ?? _$ToggleGridMode._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

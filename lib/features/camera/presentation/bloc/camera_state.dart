@@ -16,6 +16,7 @@ abstract class CameraState implements Built<CameraState, CameraStateBuilder> {
   CameraLensDirection get currentLensDirection;
   File? get capturedImage;
   bool get showDiagnostics;
+  GridMode get gridMode;
   CameraState._();
   factory CameraState([void Function(CameraStateBuilder) updates]) =
       _$CameraState;
@@ -28,6 +29,7 @@ abstract class CameraState implements Built<CameraState, CameraStateBuilder> {
       ..currentLensDirection = CameraLensDirection.back
       ..capturedImage = null
       ..showDiagnostics = false
+      ..gridMode = GridMode.crosshair
       ..status = BlocStatus.initial,
   );
 }
