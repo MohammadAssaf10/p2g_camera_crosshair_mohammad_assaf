@@ -9,9 +9,7 @@ class FakePermissionHandler extends PermissionHandlerPlatform {
   FakePermissionHandler(this.statusToReturn);
 
   @override
-  Future<PermissionStatus> checkPermissionStatus(
-    Permission permission,
-  ) async {
+  Future<PermissionStatus> checkPermissionStatus(Permission permission) async {
     return statusToReturn;
   }
 
@@ -19,9 +17,7 @@ class FakePermissionHandler extends PermissionHandlerPlatform {
   Future<Map<Permission, PermissionStatus>> requestPermissions(
     List<Permission> permissions,
   ) async {
-    return {
-      for (final permission in permissions) permission: statusToReturn,
-    };
+    return {for (final permission in permissions) permission: statusToReturn};
   }
 }
 
@@ -30,8 +26,9 @@ void main() {
 
   group('CameraHelper Tests', () {
     test('returns granted when permission already granted', () async {
-      PermissionHandlerPlatform.instance =
-          FakePermissionHandler(PermissionStatus.granted);
+      PermissionHandlerPlatform.instance = FakePermissionHandler(
+        PermissionStatus.granted,
+      );
 
       final result = await CameraHelper.checkCameraPermissions();
 
@@ -39,8 +36,9 @@ void main() {
     });
 
     test('requests permission when initially denied', () async {
-      PermissionHandlerPlatform.instance =
-          FakePermissionHandler(PermissionStatus.denied);
+      PermissionHandlerPlatform.instance = FakePermissionHandler(
+        PermissionStatus.denied,
+      );
 
       final result = await CameraHelper.checkCameraPermissions();
 
