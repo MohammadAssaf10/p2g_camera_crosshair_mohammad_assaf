@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theming/colors_manager.dart';
 import 'widgets/photo_details_app_bar.dart';
+import 'widgets/photo_details_error.dart';
 import 'widgets/photo_details_loader.dart';
 import 'widgets/photo_view.dart';
 
@@ -17,6 +18,7 @@ class PhotoDetailsPage extends StatelessWidget {
         children: [
           Divider(color: ColorsManager.customGray, height: 20, thickness: 1),
           PhotoDetailsLoader(),
+          PhotoDetailsError(),
           PhotoView(),
         ],
       ),

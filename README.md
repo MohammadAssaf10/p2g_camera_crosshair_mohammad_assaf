@@ -151,7 +151,21 @@ The project includes a Makefile for convenience:
 
 ## 🎨 Design Choices
 
-### 1. Camera Plugin Selection
+### 1. Project Architecture
+
+**Pattern**: Feature-based Clean Architecture
+
+```
+lib/
+  ├── core/               # Shared utilities, routing, theming
+  ├── features/
+  │   ├── camera/        # Camera feature module
+  │   │   └── presentation/  # UI & BLoC
+  │   └── photo_details/ # Photo preview feature
+  └── generated/         # Auto-generated code
+```
+
+### 2. Camera Plugin Selection
 
 **Choice**: `camera: ^0.11.3` (official Flutter plugin)
 
@@ -162,7 +176,7 @@ The project includes a Makefile for convenience:
 - **Well Documented**: Extensive documentation and community support
 - **Performance**: Native implementation ensures smooth preview and capture
 
-### 2. Grid Overlay Technique
+### 3. Grid Overlay Technique
 
 **Implementation**: Custom widgets using Flutter's `Stack`
 
@@ -186,7 +200,7 @@ GridOverlayWidget (Selector)
 - **Easy Customization**: Simple widget tree modifications
 - **Clean Separation**: UI overlay completely decoupled from camera logic
 
-### 3. Orientation Handling
+### 4. Orientation Handling
 
 **Strategy**: Dynamic responsive design with orientation detection
 
@@ -209,7 +223,7 @@ width: orientation == Orientation.portrait
 - iOS: Native orientation updates via `CameraController`
 - Android: Automatic handling through Flutter framework
 
-### 4. State Management
+### 5. State Management
 
 **Choice**: BLoC (Business Logic Component) pattern
 
@@ -230,7 +244,7 @@ CameraState:
   - permissions status
 ```
 
-### 5. Permission Handling
+### 6. Permission Handling
 
 **Approach**: `permission_handler` with graceful degradation
 
@@ -245,19 +259,6 @@ CameraState:
 - Non-intrusive permission requests
 - Fallback UI instead of blank screen
 
-### 6. Project Architecture
-
-**Pattern**: Feature-based Clean Architecture
-
-```
-lib/
-  ├── core/               # Shared utilities, routing, theming
-  ├── features/
-  │   ├── camera/        # Camera feature module
-  │   │   └── presentation/  # UI & BLoC
-  │   └── photo_details/ # Photo preview feature
-  └── generated/         # Auto-generated code
-```
 
 **Benefits**:
 - **Scalability**: Easy to add new features

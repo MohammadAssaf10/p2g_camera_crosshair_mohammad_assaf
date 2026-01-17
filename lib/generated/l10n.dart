@@ -238,6 +238,26 @@ class S {
   String get diagnostics {
     return Intl.message('Diagnostics', name: 'diagnostics', desc: '', args: []);
   }
+
+  /// `Error Saving Image`
+  String get errorSavingImage {
+    return Intl.message(
+      'Error Saving Image',
+      name: 'errorSavingImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We encountered an issue while saving your photo. Please try again.`
+  String get errorSavingImageMessage {
+    return Intl.message(
+      'We encountered an issue while saving your photo. Please try again.',
+      name: 'errorSavingImageMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

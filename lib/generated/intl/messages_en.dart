@@ -30,6 +30,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "captureResult": MessageLookupByLibrary.simpleMessage("Capture Result"),
     "diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
+    "errorSavingImage": MessageLookupByLibrary.simpleMessage(
+      "Error Saving Image",
+    ),
+    "errorSavingImageMessage": MessageLookupByLibrary.simpleMessage(
+      "We encountered an issue while saving your photo. Please try again.",
+    ),
     "exifOrientation": MessageLookupByLibrary.simpleMessage("EXIF ORIENTATION"),
     "fileSize": MessageLookupByLibrary.simpleMessage("FILE SIZE"),
     "imageMetadata": MessageLookupByLibrary.simpleMessage("IMAGE METADATA"),
