@@ -4,11 +4,11 @@ A Flutter camera application featuring customizable grid overlays (crosshair, ru
 
 ## 📋 Table of Contents
 
-- [Screenshots](#screenshots)
-- [Setup](#setup)
-- [Run Instructions](#run-instructions)
-- [Design Choices](#design-choices)
-- [Time Spent & Future Improvements](#time-spent--future-improvements)
+- [Screenshots](#-screenshots)
+- [Setup](#-setup)
+- [Run Instructions](#-run-instructions)
+- [Design Choices](#-design-choices)
+- [Time Spent & Future Improvements](#️-time-spent--future-improvements)
 
 ---
 
