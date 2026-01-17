@@ -40,3 +40,10 @@ abstract class ToggleDiagnostics extends CameraEvent
   factory ToggleDiagnostics([void Function(ToggleDiagnosticsBuilder) updates]) =
       _$ToggleDiagnostics;
 }
+
+abstract class ToggleGridMode extends CameraEvent
+    implements Built<ToggleGridMode, ToggleGridModeBuilder> {
+  ToggleGridMode._();
+  factory ToggleGridMode([void Function(ToggleGridModeBuilder) updates]) =
+      _$ToggleGridMode;
+}

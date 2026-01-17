@@ -152,6 +152,27 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
     on<ToggleDiagnostics>((event, emit) {
       emit(state.rebuild((b) => b..showDiagnostics = !state.showDiagnostics));
     });
+    on<ToggleGridMode>((event, emit) {
+      GridMode newGridMode;
+      switch (state.gridMode) {
+        case GridMode.crosshair:
+          newGridMode = GridMode.ruleOfThirds;
+          break;
+        case GridMode.ruleOfThirds:
+          newGridMode = GridMode.aimDot;
+          break;
+        case GridMode.aimDot:
+          newGridMode = GridMode.crosshair;
+          break;
+      }
+      emit(
+        state.rebuild(
+          (b) => b
+            ..gridMode = newGridMode
+            ..showDiagnostics = false,
+        ),
+      );
+    });
   }
 
   @override

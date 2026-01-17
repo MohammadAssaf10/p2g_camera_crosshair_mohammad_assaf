@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/camera_bloc.dart';
-import 'crosshair.dart';
+import 'grid_overlay_widget.dart';
 
 class CameraBodyView extends StatelessWidget {
   const CameraBodyView({super.key});
@@ -29,7 +29,10 @@ class CameraBodyView extends StatelessWidget {
       child: Transform.scale(
         scale: scale,
         child: Center(
-          child: CameraPreview(cameraController, child: const Crosshair()),
+          child: CameraPreview(
+            cameraController,
+            child: const GridOverlayWidget(),
+          ),
         ),
       ),
     );

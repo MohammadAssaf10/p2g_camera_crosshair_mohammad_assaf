@@ -21,6 +21,8 @@ class _$CameraState extends CameraState {
   final File? capturedImage;
   @override
   final bool showDiagnostics;
+  @override
+  final GridMode gridMode;
 
   factory _$CameraState([void Function(CameraStateBuilder)? updates]) =>
       (CameraStateBuilder()..update(updates))._build();
@@ -33,6 +35,7 @@ class _$CameraState extends CameraState {
     required this.currentLensDirection,
     this.capturedImage,
     required this.showDiagnostics,
+    required this.gridMode,
   }) : super._();
   @override
   CameraState rebuild(void Function(CameraStateBuilder) updates) =>
@@ -51,7 +54,8 @@ class _$CameraState extends CameraState {
         flashMode == other.flashMode &&
         currentLensDirection == other.currentLensDirection &&
         capturedImage == other.capturedImage &&
-        showDiagnostics == other.showDiagnostics;
+        showDiagnostics == other.showDiagnostics &&
+        gridMode == other.gridMode;
   }
 
   @override
@@ -64,6 +68,7 @@ class _$CameraState extends CameraState {
     _$hash = $jc(_$hash, currentLensDirection.hashCode);
     _$hash = $jc(_$hash, capturedImage.hashCode);
     _$hash = $jc(_$hash, showDiagnostics.hashCode);
+    _$hash = $jc(_$hash, gridMode.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -77,7 +82,8 @@ class _$CameraState extends CameraState {
           ..add('flashMode', flashMode)
           ..add('currentLensDirection', currentLensDirection)
           ..add('capturedImage', capturedImage)
-          ..add('showDiagnostics', showDiagnostics))
+          ..add('showDiagnostics', showDiagnostics)
+          ..add('gridMode', gridMode))
         .toString();
   }
 }
@@ -119,6 +125,10 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
   set showDiagnostics(bool? showDiagnostics) =>
       _$this._showDiagnostics = showDiagnostics;
 
+  GridMode? _gridMode;
+  GridMode? get gridMode => _$this._gridMode;
+  set gridMode(GridMode? gridMode) => _$this._gridMode = gridMode;
+
   CameraStateBuilder();
 
   CameraStateBuilder get _$this {
@@ -131,6 +141,7 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
       _currentLensDirection = $v.currentLensDirection;
       _capturedImage = $v.capturedImage;
       _showDiagnostics = $v.showDiagnostics;
+      _gridMode = $v.gridMode;
       _$v = null;
     }
     return this;
@@ -179,6 +190,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
             showDiagnostics,
             r'CameraState',
             'showDiagnostics',
+          ),
+          gridMode: BuiltValueNullFieldError.checkNotNull(
+            gridMode,
+            r'CameraState',
+            'gridMode',
           ),
         );
     replace(_$result);
