@@ -77,7 +77,13 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
             newFlashMode = FlashMode.off;
         }
         await cameraController!.setFlashMode(newFlashMode);
-        emit(state.rebuild((b) => b..flashMode = newFlashMode));
+        emit(
+          state.rebuild(
+            (b) => b
+              ..flashMode = newFlashMode
+              ..showDiagnostics = false,
+          ),
+        );
       } catch (e) {
         debugPrint('Error toggling flash: $e');
       }
@@ -85,7 +91,13 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
     on<SwitchCamera>((event, emit) async {
       if (cameraController == null) return;
       try {
-        emit(state.rebuild((b) => b..status = BlocStatus.loading));
+        emit(
+          state.rebuild(
+            (b) => b
+              ..status = BlocStatus.loading
+              ..showDiagnostics = false,
+          ),
+        );
         await cameraController!.dispose();
         emit(state.rebuild((b) => b..isCameraInitialized = false));
         final List<CameraDescription> cameras = await availableCameras();
@@ -125,11 +137,20 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
       }
       try {
         final XFile image = await cameraController!.takePicture();
-        emit(state.rebuild((b) => b..capturedImage = File(image.path)));
+        emit(
+          state.rebuild(
+            (b) => b
+              ..capturedImage = File(image.path)
+              ..showDiagnostics = false,
+          ),
+        );
         emit(state.rebuild((b) => b..capturedImage = null));
       } catch (e) {
         debugPrint('Error capturing image: $e');
       }
+    });
+    on<ToggleDiagnostics>((event, emit) {
+      emit(state.rebuild((b) => b..showDiagnostics = !state.showDiagnostics));
     });
   }
 

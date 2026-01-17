@@ -33,3 +33,10 @@ abstract class CaptureImage extends CameraEvent
   factory CaptureImage([void Function(CaptureImageBuilder) updates]) =
       _$CaptureImage;
 }
+
+abstract class ToggleDiagnostics extends CameraEvent
+    implements Built<ToggleDiagnostics, ToggleDiagnosticsBuilder> {
+  ToggleDiagnostics._();
+  factory ToggleDiagnostics([void Function(ToggleDiagnosticsBuilder) updates]) =
+      _$ToggleDiagnostics;
+}

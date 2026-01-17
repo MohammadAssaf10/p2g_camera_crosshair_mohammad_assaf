@@ -19,6 +19,8 @@ class _$CameraState extends CameraState {
   final CameraLensDirection currentLensDirection;
   @override
   final File? capturedImage;
+  @override
+  final bool showDiagnostics;
 
   factory _$CameraState([void Function(CameraStateBuilder)? updates]) =>
       (CameraStateBuilder()..update(updates))._build();
@@ -30,6 +32,7 @@ class _$CameraState extends CameraState {
     required this.flashMode,
     required this.currentLensDirection,
     this.capturedImage,
+    required this.showDiagnostics,
   }) : super._();
   @override
   CameraState rebuild(void Function(CameraStateBuilder) updates) =>
@@ -47,7 +50,8 @@ class _$CameraState extends CameraState {
         isCameraInitialized == other.isCameraInitialized &&
         flashMode == other.flashMode &&
         currentLensDirection == other.currentLensDirection &&
-        capturedImage == other.capturedImage;
+        capturedImage == other.capturedImage &&
+        showDiagnostics == other.showDiagnostics;
   }
 
   @override
@@ -59,6 +63,7 @@ class _$CameraState extends CameraState {
     _$hash = $jc(_$hash, flashMode.hashCode);
     _$hash = $jc(_$hash, currentLensDirection.hashCode);
     _$hash = $jc(_$hash, capturedImage.hashCode);
+    _$hash = $jc(_$hash, showDiagnostics.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -71,7 +76,8 @@ class _$CameraState extends CameraState {
           ..add('isCameraInitialized', isCameraInitialized)
           ..add('flashMode', flashMode)
           ..add('currentLensDirection', currentLensDirection)
-          ..add('capturedImage', capturedImage))
+          ..add('capturedImage', capturedImage)
+          ..add('showDiagnostics', showDiagnostics))
         .toString();
   }
 }
@@ -108,6 +114,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
   set capturedImage(File? capturedImage) =>
       _$this._capturedImage = capturedImage;
 
+  bool? _showDiagnostics;
+  bool? get showDiagnostics => _$this._showDiagnostics;
+  set showDiagnostics(bool? showDiagnostics) =>
+      _$this._showDiagnostics = showDiagnostics;
+
   CameraStateBuilder();
 
   CameraStateBuilder get _$this {
@@ -119,6 +130,7 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
       _flashMode = $v.flashMode;
       _currentLensDirection = $v.currentLensDirection;
       _capturedImage = $v.capturedImage;
+      _showDiagnostics = $v.showDiagnostics;
       _$v = null;
     }
     return this;
@@ -163,6 +175,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
             'currentLensDirection',
           ),
           capturedImage: capturedImage,
+          showDiagnostics: BuiltValueNullFieldError.checkNotNull(
+            showDiagnostics,
+            r'CameraState',
+            'showDiagnostics',
+          ),
         );
     replace(_$result);
     return _$result;

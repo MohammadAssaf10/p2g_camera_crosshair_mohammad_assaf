@@ -15,6 +15,7 @@ abstract class CameraState implements Built<CameraState, CameraStateBuilder> {
   FlashMode get flashMode;
   CameraLensDirection get currentLensDirection;
   File? get capturedImage;
+  bool get showDiagnostics;
   CameraState._();
   factory CameraState([void Function(CameraStateBuilder) updates]) =
       _$CameraState;
@@ -26,6 +27,7 @@ abstract class CameraState implements Built<CameraState, CameraStateBuilder> {
       ..flashMode = FlashMode.off
       ..currentLensDirection = CameraLensDirection.back
       ..capturedImage = null
+      ..showDiagnostics = false
       ..status = BlocStatus.initial,
   );
 }

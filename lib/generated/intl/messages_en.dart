@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Camera Permission Required",
     ),
     "captureResult": MessageLookupByLibrary.simpleMessage("Capture Result"),
+    "diagnostics": MessageLookupByLibrary.simpleMessage("Diagnostics"),
     "exifOrientation": MessageLookupByLibrary.simpleMessage("EXIF ORIENTATION"),
     "fileSize": MessageLookupByLibrary.simpleMessage("FILE SIZE"),
     "imageMetadata": MessageLookupByLibrary.simpleMessage("IMAGE METADATA"),
@@ -53,5 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "retakePhoto": MessageLookupByLibrary.simpleMessage("Retake Photo"),
     "storagePath": MessageLookupByLibrary.simpleMessage("STORAGE PATH"),
     "timestamp": MessageLookupByLibrary.simpleMessage("TIMESTAMP"),
+    "toggleDiagnostics": MessageLookupByLibrary.simpleMessage(
+      "Toggle Diagnostics",
+    ),
   };
 }

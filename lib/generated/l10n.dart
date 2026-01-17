@@ -223,6 +223,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Toggle Diagnostics`
+  String get toggleDiagnostics {
+    return Intl.message(
+      'Toggle Diagnostics',
+      name: 'toggleDiagnostics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Diagnostics`
+  String get diagnostics {
+    return Intl.message('Diagnostics', name: 'diagnostics', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

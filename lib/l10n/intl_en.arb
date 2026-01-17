@@ -17,5 +17,7 @@
     "orientationDownMirrored": "Down, Mirrored",
     "orientationLeftMirrored": "Left, Mirrored",
     "orientationRightMirrored": "Right, Mirrored",
-    "retakePhoto": "Retake Photo"
+    "retakePhoto": "Retake Photo",
+    "toggleDiagnostics": "Toggle Diagnostics",
+    "diagnostics": "Diagnostics"
 }

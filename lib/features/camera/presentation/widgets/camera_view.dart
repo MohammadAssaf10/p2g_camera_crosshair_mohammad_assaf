@@ -7,6 +7,8 @@ import '../bloc/camera_state.dart';
 import 'camera_body_view.dart';
 import 'camera_flash_button.dart';
 import 'change_camera_lens_direction.dart';
+import 'diagnostics_button.dart';
+import 'diagnostics_panel.dart';
 import 'take_image_button.dart';
 
 class CameraView extends StatelessWidget {
@@ -27,6 +29,8 @@ class CameraView extends StatelessWidget {
                     CameraFlashButton(),
                     ChangeCameraLensDirection(),
                     TakeImageButton(),
+                    DiagnosticsButton(),
+                    DiagnosticsPanel(),
                   ],
                 ),
               )
