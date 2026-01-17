@@ -34,7 +34,7 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
         );
         cameraController = CameraController(
           camera,
-          ResolutionPreset.max,
+          ResolutionPreset.high,
           enableAudio: false,
         );
         await cameraController!.initialize();
@@ -107,7 +107,7 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
         );
         cameraController = CameraController(
           camera,
-          ResolutionPreset.max,
+          ResolutionPreset.high,
           enableAudio: false,
         );
         await cameraController!.initialize();
