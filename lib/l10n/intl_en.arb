@@ -1,5 +1,23 @@
 {
     "cameraPermissionRequired": "Camera Permission Required",
     "cameraPermissionMessage": "This app requires camera access to function properly.\nPlease enable camera permissions in your device settings",
-    "openSettings": "Open Settings"
+    "openSettings": "Open Settings",
+    "captureResult": "Capture Result",
+    "imageMetadata": "IMAGE METADATA",
+    "resolution": "RESOLUTION",
+    "fileSize": "FILE SIZE",
+    "storagePath": "STORAGE PATH",
+    "timestamp": "TIMESTAMP",
+    "exifOrientation": "EXIF ORIENTATION",
+    "orientationUp": "Up (0°)",
+    "orientationDown": "Down (180°)",
+    "orientationRight": "Right (90°)",
+    "orientationLeft": "Left (270°)",
+    "orientationUpMirrored": "Up, Mirrored",
+    "orientationDownMirrored": "Down, Mirrored",
+    "orientationLeftMirrored": "Left, Mirrored",
+    "orientationRightMirrored": "Right, Mirrored",
+    "retakePhoto": "Retake Photo",
+    "toggleDiagnostics": "Toggle Diagnostics",
+    "diagnostics": "Diagnostics"
 }

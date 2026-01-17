@@ -4,6 +4,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../../../core/theming/colors_manager.dart';
 import '../../../../core/theming/font_weight_manager.dart';
+import '../../../../core/utils/app_enums.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/camera_bloc.dart';
 import '../bloc/camera_event.dart';
@@ -39,13 +40,12 @@ class _CameraPermissionDeniedViewState
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CameraBloc, CameraState, PermissionStatus?>(
+    return BlocSelector<CameraBloc, CameraState, BlocStatus>(
       selector: (state) {
-        return state.cameraPermissionStatus;
+        return state.status;
       },
-      builder: (context, cameraPermissionStatus) {
-        return cameraPermissionStatus == PermissionStatus.denied ||
-                cameraPermissionStatus == PermissionStatus.permanentlyDenied
+      builder: (context, status) {
+        return status == BlocStatus.failure
             ? Expanded(
                 child: Center(
                   child: Column(

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:permission_handler/permission_handler.dart';
 
+import '../../../../core/utils/app_enums.dart';
 import '../bloc/camera_bloc.dart';
 import '../bloc/camera_state.dart';
 import 'camera_body_view.dart';
 import 'camera_flash_button.dart';
 import 'change_camera_lens_direction.dart';
+import 'diagnostics_button.dart';
+import 'diagnostics_panel.dart';
 import 'take_image_button.dart';
 
 class CameraView extends StatelessWidget {
@@ -14,12 +16,12 @@ class CameraView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CameraBloc, CameraState, (PermissionStatus?, bool)>(
+    return BlocSelector<CameraBloc, CameraState, BlocStatus>(
       selector: (state) {
-        return (state.cameraPermissionStatus, state.isCameraInitialized);
+        return state.status;
       },
-      builder: (context, state) {
-        return state.$1 == PermissionStatus.granted && state.$2 == true
+      builder: (context, status) {
+        return status == BlocStatus.success
             ? const Expanded(
                 child: Stack(
                   children: [
@@ -27,6 +29,8 @@ class CameraView extends StatelessWidget {
                     CameraFlashButton(),
                     ChangeCameraLensDirection(),
                     TakeImageButton(),
+                    DiagnosticsButton(),
+                    DiagnosticsPanel(),
                   ],
                 ),
               )

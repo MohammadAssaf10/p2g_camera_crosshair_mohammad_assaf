@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/routing/routes.dart';
 import 'bloc/camera_bloc.dart';
 import 'bloc/camera_state.dart';
 import 'widgets/camera_loader.dart';
@@ -19,7 +20,10 @@ class CameraPage extends StatelessWidget {
       body: BlocListener<CameraBloc, CameraState>(
         listener: (context, state) {
           if (state.capturedImage != null) {
-            // TODO: Handle push photo details page
+            Navigator.of(context).pushNamed(
+              Routes.photoDetailsPage,
+              arguments: state.capturedImage,
+            );
           }
         },
         child: const Column(

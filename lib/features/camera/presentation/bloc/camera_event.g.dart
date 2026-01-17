@@ -261,4 +261,61 @@ class CaptureImageBuilder
   }
 }
 
+class _$ToggleDiagnostics extends ToggleDiagnostics {
+  factory _$ToggleDiagnostics([
+    void Function(ToggleDiagnosticsBuilder)? updates,
+  ]) => (ToggleDiagnosticsBuilder()..update(updates))._build();
+
+  _$ToggleDiagnostics._() : super._();
+  @override
+  ToggleDiagnostics rebuild(void Function(ToggleDiagnosticsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  ToggleDiagnosticsBuilder toBuilder() =>
+      ToggleDiagnosticsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is ToggleDiagnostics;
+  }
+
+  @override
+  int get hashCode {
+    return 138708899;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'ToggleDiagnostics').toString();
+  }
+}
+
+class ToggleDiagnosticsBuilder
+    implements Builder<ToggleDiagnostics, ToggleDiagnosticsBuilder> {
+  _$ToggleDiagnostics? _$v;
+
+  ToggleDiagnosticsBuilder();
+
+  @override
+  void replace(ToggleDiagnostics other) {
+    _$v = other as _$ToggleDiagnostics;
+  }
+
+  @override
+  void update(void Function(ToggleDiagnosticsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  ToggleDiagnostics build() => _build();
+
+  _$ToggleDiagnostics _build() {
+    final _$result = _$v ?? _$ToggleDiagnostics._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

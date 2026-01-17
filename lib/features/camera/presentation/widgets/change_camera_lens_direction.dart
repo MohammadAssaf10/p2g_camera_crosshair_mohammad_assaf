@@ -13,10 +13,9 @@ class ChangeCameraLensDirection extends StatelessWidget {
   Widget build(BuildContext context) {
     final Orientation orientation = MediaQuery.orientationOf(context);
     return PositionedDirectional(
-      top: orientation == Orientation.portrait ? 50 : null,
-      bottom: orientation == Orientation.portrait ? null : 30,
-      end: orientation == Orientation.portrait ? 20 : null,
-      start: orientation == Orientation.portrait ? null : 20,
+      top: orientation == Orientation.portrait ? null : 30,
+      bottom: orientation == Orientation.portrait ? 70 : null,
+      end: orientation == Orientation.portrait ? 30 : 70,
       child: IconButton(
         onPressed: () {
           final CameraLensDirection currentLensDirection = context

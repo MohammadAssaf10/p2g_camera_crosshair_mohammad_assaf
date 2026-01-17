@@ -8,6 +8,8 @@ part of 'camera_state.dart';
 
 class _$CameraState extends CameraState {
   @override
+  final BlocStatus status;
+  @override
   final PermissionStatus? cameraPermissionStatus;
   @override
   final bool isCameraInitialized;
@@ -17,16 +19,20 @@ class _$CameraState extends CameraState {
   final CameraLensDirection currentLensDirection;
   @override
   final File? capturedImage;
+  @override
+  final bool showDiagnostics;
 
   factory _$CameraState([void Function(CameraStateBuilder)? updates]) =>
       (CameraStateBuilder()..update(updates))._build();
 
   _$CameraState._({
+    required this.status,
     this.cameraPermissionStatus,
     required this.isCameraInitialized,
     required this.flashMode,
     required this.currentLensDirection,
     this.capturedImage,
+    required this.showDiagnostics,
   }) : super._();
   @override
   CameraState rebuild(void Function(CameraStateBuilder) updates) =>
@@ -39,21 +45,25 @@ class _$CameraState extends CameraState {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is CameraState &&
+        status == other.status &&
         cameraPermissionStatus == other.cameraPermissionStatus &&
         isCameraInitialized == other.isCameraInitialized &&
         flashMode == other.flashMode &&
         currentLensDirection == other.currentLensDirection &&
-        capturedImage == other.capturedImage;
+        capturedImage == other.capturedImage &&
+        showDiagnostics == other.showDiagnostics;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, cameraPermissionStatus.hashCode);
     _$hash = $jc(_$hash, isCameraInitialized.hashCode);
     _$hash = $jc(_$hash, flashMode.hashCode);
     _$hash = $jc(_$hash, currentLensDirection.hashCode);
     _$hash = $jc(_$hash, capturedImage.hashCode);
+    _$hash = $jc(_$hash, showDiagnostics.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -61,17 +71,23 @@ class _$CameraState extends CameraState {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'CameraState')
+          ..add('status', status)
           ..add('cameraPermissionStatus', cameraPermissionStatus)
           ..add('isCameraInitialized', isCameraInitialized)
           ..add('flashMode', flashMode)
           ..add('currentLensDirection', currentLensDirection)
-          ..add('capturedImage', capturedImage))
+          ..add('capturedImage', capturedImage)
+          ..add('showDiagnostics', showDiagnostics))
         .toString();
   }
 }
 
 class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
   _$CameraState? _$v;
+
+  BlocStatus? _status;
+  BlocStatus? get status => _$this._status;
+  set status(BlocStatus? status) => _$this._status = status;
 
   PermissionStatus? _cameraPermissionStatus;
   PermissionStatus? get cameraPermissionStatus =>
@@ -98,16 +114,23 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
   set capturedImage(File? capturedImage) =>
       _$this._capturedImage = capturedImage;
 
+  bool? _showDiagnostics;
+  bool? get showDiagnostics => _$this._showDiagnostics;
+  set showDiagnostics(bool? showDiagnostics) =>
+      _$this._showDiagnostics = showDiagnostics;
+
   CameraStateBuilder();
 
   CameraStateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _status = $v.status;
       _cameraPermissionStatus = $v.cameraPermissionStatus;
       _isCameraInitialized = $v.isCameraInitialized;
       _flashMode = $v.flashMode;
       _currentLensDirection = $v.currentLensDirection;
       _capturedImage = $v.capturedImage;
+      _showDiagnostics = $v.showDiagnostics;
       _$v = null;
     }
     return this;
@@ -130,6 +153,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
     final _$result =
         _$v ??
         _$CameraState._(
+          status: BuiltValueNullFieldError.checkNotNull(
+            status,
+            r'CameraState',
+            'status',
+          ),
           cameraPermissionStatus: cameraPermissionStatus,
           isCameraInitialized: BuiltValueNullFieldError.checkNotNull(
             isCameraInitialized,
@@ -147,6 +175,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
             'currentLensDirection',
           ),
           capturedImage: capturedImage,
+          showDiagnostics: BuiltValueNullFieldError.checkNotNull(
+            showDiagnostics,
+            r'CameraState',
+            'showDiagnostics',
+          ),
         );
     replace(_$result);
     return _$result;
