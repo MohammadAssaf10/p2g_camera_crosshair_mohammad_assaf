@@ -32,7 +32,7 @@ class GridModeButton extends StatelessWidget {
           builder: (context, gridMode) {
             return Icon(
               _getIconForGridMode(gridMode),
-              color: Colors.white,
+              color: gridMode == GridMode.aimDot ? Colors.red : Colors.white,
               size: 30,
             );
           },
@@ -48,7 +48,8 @@ class GridModeButton extends StatelessWidget {
       case GridMode.ruleOfThirds:
         return Icons.circle_outlined;
       case GridMode.aimDot:
-        return Icons.add;
+      case GridMode.redCrosshair:
+        return Icons.add_rounded;
     }
   }
 }
