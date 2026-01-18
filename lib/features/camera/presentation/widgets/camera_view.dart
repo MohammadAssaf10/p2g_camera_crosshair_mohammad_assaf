@@ -10,6 +10,7 @@ import 'change_camera_lens_direction.dart';
 import 'diagnostics_button.dart';
 import 'diagnostics_panel.dart';
 import 'grid_mode_button.dart';
+import 'grid_overlay_widget.dart';
 import 'take_image_button.dart';
 
 class CameraView extends StatelessWidget {
@@ -27,6 +28,7 @@ class CameraView extends StatelessWidget {
                 child: Stack(
                   children: [
                     CameraBodyView(),
+                    GridOverlayWidget(),
                     CameraFlashButton(),
                     ChangeCameraLensDirection(),
                     TakeImageButton(),

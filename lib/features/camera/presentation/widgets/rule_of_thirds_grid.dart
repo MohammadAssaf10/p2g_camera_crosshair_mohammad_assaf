@@ -5,58 +5,51 @@ class RuleOfThirdsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Orientation orientation = MediaQuery.orientationOf(context);
-    return Stack(
-      children: [
-        Positioned(
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Center(
-                child: Container(
-                  width: 1,
-                  height: double.infinity,
-                  color: Colors.white.withValues(alpha: 0.5),
-                ),
-              ),
-              Container(
-                width: 1,
-                height: double.infinity,
-                color: Colors.white.withValues(alpha: 0.5),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          top: 0,
-          bottom: 0,
-          right: 0,
-          left: 0,
-          child: Column(
-            children: [
-              Spacer(flex: orientation == Orientation.landscape ? 2 : 1),
-              Center(
-                child: Container(
-                  width: double.infinity,
-                  height: 1,
-                  color: Colors.white.withValues(alpha: 0.5),
-                ),
-              ),
-              const Spacer(),
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.white.withValues(alpha: 0.5),
-              ),
-              Spacer(flex: orientation == Orientation.landscape ? 2 : 1),
-            ],
-          ),
-        ),
-      ],
+    return Positioned.fill(
+      child: CustomPaint(painter: _RuleOfThirdsGridPainter()),
     );
   }
+}
+
+class _RuleOfThirdsGridPainter extends CustomPainter {
+  static const double _lineOpacity = 0.5;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withValues(alpha: _lineOpacity)
+      ..strokeWidth = 1.0
+      ..style = PaintingStyle.stroke;
+
+    // Calculate positions for rule of thirds (divide into 3 equal parts)
+    final double horizontalThird = size.height / 3;
+    final double verticalThird = size.width / 3;
+
+    // Draw two horizontal lines
+    canvas.drawLine(
+      Offset(0, horizontalThird),
+      Offset(size.width, horizontalThird),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(0, horizontalThird * 2),
+      Offset(size.width, horizontalThird * 2),
+      paint,
+    );
+
+    // Draw two vertical lines
+    canvas.drawLine(
+      Offset(verticalThird, 0),
+      Offset(verticalThird, size.height),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(verticalThird * 2, 0),
+      Offset(verticalThird * 2, size.height),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
