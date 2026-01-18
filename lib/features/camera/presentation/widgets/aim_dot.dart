@@ -9,8 +9,8 @@ class AimDot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 8,
-        height: 8,
+        width: 10,
+        height: 10,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white,

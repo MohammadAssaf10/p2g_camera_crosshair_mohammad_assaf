@@ -8,15 +8,12 @@ class Crosshair extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.sizeOf(context);
-    final Orientation orientation = MediaQuery.orientationOf(context);
     return Stack(
       children: [
         Center(
           child: Container(
-            height: 1.4,
-            width: orientation == Orientation.portrait
-                ? screenSize.width * 0.35
-                : screenSize.width * 0.13,
+            height: 2,
+            width: screenSize.width * 0.35,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
@@ -32,10 +29,8 @@ class Crosshair extends StatelessWidget {
         ),
         Center(
           child: Container(
-            width: 1.4,
-            height: orientation == Orientation.portrait
-                ? screenSize.height * 0.24
-                : screenSize.height * 0.16,
+            width: 2,
+            height: screenSize.height * 0.35,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
@@ -51,8 +46,8 @@ class Crosshair extends StatelessWidget {
         ),
         Center(
           child: Container(
-            width: 3,
-            height: 3,
+            width: 4,
+            height: 4,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.transparent,

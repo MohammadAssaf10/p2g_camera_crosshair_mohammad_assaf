@@ -98,37 +98,22 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
               ..showDiagnostics = false,
           ),
         );
-        await cameraController!.dispose();
-        emit(state.rebuild((b) => b..isCameraInitialized = false));
         final List<CameraDescription> cameras = await availableCameras();
         final camera = cameras.firstWhere(
           (desc) => desc.lensDirection == event.targetLensDirection,
           orElse: () => cameras.first,
         );
-        cameraController = CameraController(
-          camera,
-          ResolutionPreset.high,
-          enableAudio: false,
-        );
-        await cameraController!.initialize();
-        await cameraController!.setFlashMode(state.flashMode);
+        await cameraController!.setDescription(camera);
         emit(
           state.rebuild(
             (b) => b
-              ..isCameraInitialized = cameraController!.value.isInitialized
               ..currentLensDirection = camera.lensDirection
               ..status = BlocStatus.success,
           ),
         );
       } catch (e) {
         debugPrint('Error switching camera: $e');
-        emit(
-          state.rebuild(
-            (b) => b
-              ..isCameraInitialized = false
-              ..status = BlocStatus.failure,
-          ),
-        );
+        emit(state.rebuild((b) => b..status = BlocStatus.failure));
       }
     });
     on<CaptureImage>((event, emit) async {
