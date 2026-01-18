@@ -17,7 +17,17 @@ class Crosshair extends StatelessWidget {
             width: orientation == Orientation.portrait
                 ? screenSize.width * 0.35
                 : screenSize.width * 0.13,
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(2),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorsManager.customBlack.withValues(alpha: 0.1),
+                  blurRadius: 1,
+                  spreadRadius: 0.1,
+                ),
+              ],
+            ),
           ),
         ),
         Center(
@@ -26,7 +36,17 @@ class Crosshair extends StatelessWidget {
             height: orientation == Orientation.portrait
                 ? screenSize.height * 0.24
                 : screenSize.height * 0.16,
-            color: Colors.white,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(2),
+              boxShadow: [
+                BoxShadow(
+                  color: ColorsManager.customBlack.withValues(alpha: 0.1),
+                  blurRadius: 1,
+                  spreadRadius: 0.1,
+                ),
+              ],
+            ),
           ),
         ),
         Center(

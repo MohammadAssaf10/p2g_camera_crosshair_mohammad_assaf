@@ -162,6 +162,9 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
           newGridMode = GridMode.aimDot;
           break;
         case GridMode.aimDot:
+          newGridMode = GridMode.redCrosshair;
+          break;
+        case GridMode.redCrosshair:
           newGridMode = GridMode.crosshair;
           break;
       }

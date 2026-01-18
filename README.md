@@ -19,6 +19,7 @@ A Flutter camera application featuring customizable grid overlays (crosshair, ru
 <p align="center">
   <img src="assets/images/phone1.png" width="200" alt="Phone Screenshot 1"/>
   <img src="assets/images/phone2.png" width="200" alt="Phone Screenshot 2"/>
+  <img src="assets/images/phone6.png" width="200" alt="Phone Screenshot 6"/>
   <img src="assets/images/phone3.png" width="200" alt="Phone Screenshot 3"/>
   <img src="assets/images/phone4.png" width="200" alt="Phone Screenshot 4"/>
   <img src="assets/images/phone5.png" width="200" alt="Phone Screenshot 5"/>

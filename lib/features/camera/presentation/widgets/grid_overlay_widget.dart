@@ -6,6 +6,7 @@ import '../bloc/camera_bloc.dart';
 import '../bloc/camera_state.dart';
 import 'aim_dot.dart';
 import 'crosshair.dart';
+import 'red_crosshair.dart';
 import 'rule_of_thirds_grid.dart';
 
 class GridOverlayWidget extends StatelessWidget {
@@ -23,6 +24,8 @@ class GridOverlayWidget extends StatelessWidget {
             return const RuleOfThirdsGrid();
           case GridMode.aimDot:
             return const AimDot();
+          case GridMode.redCrosshair:
+            return const RedCrosshair();
         }
       },
     );
