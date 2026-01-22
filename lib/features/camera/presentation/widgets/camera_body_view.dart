@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,32 +14,47 @@ class CameraBodyView extends StatelessWidget {
     final CameraController cameraController = context
         .read<CameraBloc>()
         .cameraController!;
-    CameraValue camera = cameraController.value;
-    // fetch screen size
-    final size = MediaQuery.sizeOf(context);
 
-    // calculate scale depending on screen and camera ratios
-    // this is actually size.aspectRatio / (1 / camera.aspectRatio)
-    // because camera preview size is received as landscape
-    // but we're calculating for portrait orientation
-    double scale = size.aspectRatio * camera.aspectRatio;
-
-    // to prevent scaling down, invert the value
-    if (scale < 1) scale = 1 / scale;
     return Positioned.fill(
-      child: Transform.scale(
-        scale: scale,
-        child: Center(
-          child: OrientationBuilder(
-            builder: (context, orientation) {
-              cameraController.lockCaptureOrientation(
-                orientation == Orientation.portrait
-                    ? DeviceOrientation.portraitUp
-                    : DeviceOrientation.landscapeLeft,
-              );
-              return CameraPreview(cameraController);
-            },
-          ),
+      child: Center(
+        child: OrientationBuilder(
+          builder: (context, orientation) {
+            cameraController.lockCaptureOrientation(
+              orientation == Orientation.portrait
+                  ? DeviceOrientation.portraitUp
+                  : DeviceOrientation.landscapeLeft,
+            );
+
+            // Recalculate scale based on current orientation
+            final CameraValue camera = cameraController.value;
+            final Size size = MediaQuery.sizeOf(context);
+
+            // Calculate scale depending on screen and camera ratios
+            // Camera preview size is received as landscape (width > height)
+            // For portrait: size.aspectRatio is height/width (< 1)
+            // For landscape: size.aspectRatio is width/height (> 1)
+            double scale;
+
+            if (orientation == Orientation.portrait) {
+              // In portrait mode: multiply screen aspect ratio by camera aspect ratio
+              scale = size.aspectRatio * camera.aspectRatio;
+            } else {
+              // In landscape mode: divide screen aspect ratio by camera aspect ratio
+              scale = size.aspectRatio / camera.aspectRatio;
+            }
+
+            // To prevent scaling down, invert the value if needed
+            if (scale < 1) scale = 1 / scale;
+
+            if (kDebugMode) {
+              debugPrint('Orientation: $orientation, Scale: $scale');
+            }
+
+            return Transform.scale(
+              scale: scale,
+              child: CameraPreview(cameraController),
+            );
+          },
         ),
       ),
     );
