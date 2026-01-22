@@ -1,8 +1,12 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../../../core/utils/app_enums.dart';
@@ -12,6 +16,8 @@ import 'camera_state.dart';
 
 class CameraBloc extends Bloc<CameraEvent, CameraState> {
   CameraController? cameraController;
+  final GlobalKey<State<StatefulWidget>> repaintBoundaryKey =
+      GlobalKey<State<StatefulWidget>>();
   CameraBloc() : super(CameraState.initial()) {
     on<InitializeCamera>((event, emit) async {
       emit(state.rebuild((b) => b..status = BlocStatus.loading));
@@ -34,7 +40,7 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
         );
         cameraController = CameraController(
           camera,
-          ResolutionPreset.high,
+          ResolutionPreset.max,
           enableAudio: false,
         );
         await cameraController!.initialize();
@@ -121,15 +127,37 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
         return;
       }
       try {
-        final XFile image = await cameraController!.takePicture();
-        emit(
-          state.rebuild(
-            (b) => b
-              ..capturedImage = File(image.path)
-              ..showDiagnostics = false,
-          ),
-        );
-        emit(state.rebuild((b) => b..capturedImage = null));
+        // Capture the widget with grid overlay
+        final RenderRepaintBoundary? boundary =
+            repaintBoundaryKey.currentContext?.findRenderObject()
+                as RenderRepaintBoundary?;
+
+        if (boundary != null) {
+          final ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+          final ByteData? byteData = await image.toByteData(
+            format: ui.ImageByteFormat.png,
+          );
+
+          if (byteData != null) {
+            final Uint8List pngBytes = byteData.buffer.asUint8List();
+
+            // Save the image to a temporary file
+            final Directory tempDir = await getTemporaryDirectory();
+            final String filePath =
+                '${tempDir.path}/camera_${DateTime.now().millisecondsSinceEpoch}.png';
+            final File file = File(filePath);
+            await file.writeAsBytes(pngBytes);
+
+            emit(
+              state.rebuild(
+                (b) => b
+                  ..capturedImage = file
+                  ..showDiagnostics = false,
+              ),
+            );
+            emit(state.rebuild((b) => b..capturedImage = null));
+          }
+        }
       } catch (e) {
         debugPrint('Error capturing image: $e');
       }
