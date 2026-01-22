@@ -24,17 +24,21 @@ class CameraView extends StatelessWidget {
       },
       builder: (context, status) {
         return status == BlocStatus.success
-            ? const Expanded(
+            ? Expanded(
                 child: Stack(
                   children: [
-                    CameraBodyView(),
-                    GridOverlayWidget(),
-                    CameraFlashButton(),
-                    ChangeCameraLensDirection(),
-                    TakeImageButton(),
-                    GridModeButton(),
-                    DiagnosticsButton(),
-                    DiagnosticsPanel(),
+                    RepaintBoundary(
+                      key: context.read<CameraBloc>().repaintBoundaryKey,
+                      child: const Stack(
+                        children: [CameraBodyView(), GridOverlayWidget()],
+                      ),
+                    ),
+                    const CameraFlashButton(),
+                    const ChangeCameraLensDirection(),
+                    const TakeImageButton(),
+                    const GridModeButton(),
+                    const DiagnosticsButton(),
+                    const DiagnosticsPanel(),
                   ],
                 ),
               )
