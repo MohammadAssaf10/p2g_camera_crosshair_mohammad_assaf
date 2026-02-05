@@ -63,5 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "toggleDiagnostics": MessageLookupByLibrary.simpleMessage(
       "Toggle Diagnostics",
     ),
+    "toggleFlashLight": MessageLookupByLibrary.simpleMessage(
+      "Toggle Flash Light",
+    ),
   };
 }

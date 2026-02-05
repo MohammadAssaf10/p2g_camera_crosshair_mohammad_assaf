@@ -258,6 +258,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Toggle Flash Light`
+  String get toggleFlashLight {
+    return Intl.message(
+      'Toggle Flash Light',
+      name: 'toggleFlashLight',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -21,5 +21,6 @@
     "toggleDiagnostics": "Toggle Diagnostics",
     "diagnostics": "Diagnostics",
     "errorSavingImage": "Error Saving Image",
-    "errorSavingImageMessage": "We encountered an issue while saving your photo. Please try again."
+    "errorSavingImageMessage": "We encountered an issue while saving your photo. Please try again.",
+    "toggleFlashLight": "Toggle Flash Light"
 }

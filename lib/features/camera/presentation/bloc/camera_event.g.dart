@@ -63,63 +63,6 @@ class InitializeCameraBuilder
   }
 }
 
-class _$ToggleCameraFlash extends ToggleCameraFlash {
-  factory _$ToggleCameraFlash([
-    void Function(ToggleCameraFlashBuilder)? updates,
-  ]) => (ToggleCameraFlashBuilder()..update(updates))._build();
-
-  _$ToggleCameraFlash._() : super._();
-  @override
-  ToggleCameraFlash rebuild(void Function(ToggleCameraFlashBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  ToggleCameraFlashBuilder toBuilder() =>
-      ToggleCameraFlashBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is ToggleCameraFlash;
-  }
-
-  @override
-  int get hashCode {
-    return 951696399;
-  }
-
-  @override
-  String toString() {
-    return newBuiltValueToStringHelper(r'ToggleCameraFlash').toString();
-  }
-}
-
-class ToggleCameraFlashBuilder
-    implements Builder<ToggleCameraFlash, ToggleCameraFlashBuilder> {
-  _$ToggleCameraFlash? _$v;
-
-  ToggleCameraFlashBuilder();
-
-  @override
-  void replace(ToggleCameraFlash other) {
-    _$v = other as _$ToggleCameraFlash;
-  }
-
-  @override
-  void update(void Function(ToggleCameraFlashBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  ToggleCameraFlash build() => _build();
-
-  _$ToggleCameraFlash _build() {
-    final _$result = _$v ?? _$ToggleCameraFlash._();
-    replace(_$result);
-    return _$result;
-  }
-}
-
 class _$SwitchCamera extends SwitchCamera {
   @override
   final CameraLensDirection targetLensDirection;
@@ -313,6 +256,63 @@ class ToggleDiagnosticsBuilder
 
   _$ToggleDiagnostics _build() {
     final _$result = _$v ?? _$ToggleDiagnostics._();
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$ToggleFlashLight extends ToggleFlashLight {
+  factory _$ToggleFlashLight([
+    void Function(ToggleFlashLightBuilder)? updates,
+  ]) => (ToggleFlashLightBuilder()..update(updates))._build();
+
+  _$ToggleFlashLight._() : super._();
+  @override
+  ToggleFlashLight rebuild(void Function(ToggleFlashLightBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  ToggleFlashLightBuilder toBuilder() =>
+      ToggleFlashLightBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is ToggleFlashLight;
+  }
+
+  @override
+  int get hashCode {
+    return 222801036;
+  }
+
+  @override
+  String toString() {
+    return newBuiltValueToStringHelper(r'ToggleFlashLight').toString();
+  }
+}
+
+class ToggleFlashLightBuilder
+    implements Builder<ToggleFlashLight, ToggleFlashLightBuilder> {
+  _$ToggleFlashLight? _$v;
+
+  ToggleFlashLightBuilder();
+
+  @override
+  void replace(ToggleFlashLight other) {
+    _$v = other as _$ToggleFlashLight;
+  }
+
+  @override
+  void update(void Function(ToggleFlashLightBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  ToggleFlashLight build() => _build();
+
+  _$ToggleFlashLight _build() {
+    final _$result = _$v ?? _$ToggleFlashLight._();
     replace(_$result);
     return _$result;
   }
