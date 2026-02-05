@@ -12,13 +12,6 @@ abstract class InitializeCamera extends CameraEvent
       _$InitializeCamera;
 }
 
-abstract class ToggleCameraFlash extends CameraEvent
-    implements Built<ToggleCameraFlash, ToggleCameraFlashBuilder> {
-  ToggleCameraFlash._();
-  factory ToggleCameraFlash([void Function(ToggleCameraFlashBuilder) updates]) =
-      _$ToggleCameraFlash;
-}
-
 abstract class SwitchCamera extends CameraEvent
     implements Built<SwitchCamera, SwitchCameraBuilder> {
   CameraLensDirection get targetLensDirection;
@@ -39,6 +32,13 @@ abstract class ToggleDiagnostics extends CameraEvent
   ToggleDiagnostics._();
   factory ToggleDiagnostics([void Function(ToggleDiagnosticsBuilder) updates]) =
       _$ToggleDiagnostics;
+}
+
+abstract class ToggleFlashLight extends CameraEvent
+    implements Built<ToggleFlashLight, ToggleFlashLightBuilder> {
+  ToggleFlashLight._();
+  factory ToggleFlashLight([void Function(ToggleFlashLightBuilder) updates]) =
+      _$ToggleFlashLight;
 }
 
 abstract class ToggleGridMode extends CameraEvent

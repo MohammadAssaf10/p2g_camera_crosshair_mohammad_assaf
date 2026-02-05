@@ -14,8 +14,6 @@ class _$CameraState extends CameraState {
   @override
   final bool isCameraInitialized;
   @override
-  final FlashMode flashMode;
-  @override
   final CameraLensDirection currentLensDirection;
   @override
   final File? capturedImage;
@@ -23,6 +21,8 @@ class _$CameraState extends CameraState {
   final bool showDiagnostics;
   @override
   final GridMode gridMode;
+  @override
+  final bool isFlashLightOn;
 
   factory _$CameraState([void Function(CameraStateBuilder)? updates]) =>
       (CameraStateBuilder()..update(updates))._build();
@@ -31,11 +31,11 @@ class _$CameraState extends CameraState {
     required this.status,
     this.cameraPermissionStatus,
     required this.isCameraInitialized,
-    required this.flashMode,
     required this.currentLensDirection,
     this.capturedImage,
     required this.showDiagnostics,
     required this.gridMode,
+    required this.isFlashLightOn,
   }) : super._();
   @override
   CameraState rebuild(void Function(CameraStateBuilder) updates) =>
@@ -51,11 +51,11 @@ class _$CameraState extends CameraState {
         status == other.status &&
         cameraPermissionStatus == other.cameraPermissionStatus &&
         isCameraInitialized == other.isCameraInitialized &&
-        flashMode == other.flashMode &&
         currentLensDirection == other.currentLensDirection &&
         capturedImage == other.capturedImage &&
         showDiagnostics == other.showDiagnostics &&
-        gridMode == other.gridMode;
+        gridMode == other.gridMode &&
+        isFlashLightOn == other.isFlashLightOn;
   }
 
   @override
@@ -64,11 +64,11 @@ class _$CameraState extends CameraState {
     _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, cameraPermissionStatus.hashCode);
     _$hash = $jc(_$hash, isCameraInitialized.hashCode);
-    _$hash = $jc(_$hash, flashMode.hashCode);
     _$hash = $jc(_$hash, currentLensDirection.hashCode);
     _$hash = $jc(_$hash, capturedImage.hashCode);
     _$hash = $jc(_$hash, showDiagnostics.hashCode);
     _$hash = $jc(_$hash, gridMode.hashCode);
+    _$hash = $jc(_$hash, isFlashLightOn.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -79,11 +79,11 @@ class _$CameraState extends CameraState {
           ..add('status', status)
           ..add('cameraPermissionStatus', cameraPermissionStatus)
           ..add('isCameraInitialized', isCameraInitialized)
-          ..add('flashMode', flashMode)
           ..add('currentLensDirection', currentLensDirection)
           ..add('capturedImage', capturedImage)
           ..add('showDiagnostics', showDiagnostics)
-          ..add('gridMode', gridMode))
+          ..add('gridMode', gridMode)
+          ..add('isFlashLightOn', isFlashLightOn))
         .toString();
   }
 }
@@ -106,10 +106,6 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
   set isCameraInitialized(bool? isCameraInitialized) =>
       _$this._isCameraInitialized = isCameraInitialized;
 
-  FlashMode? _flashMode;
-  FlashMode? get flashMode => _$this._flashMode;
-  set flashMode(FlashMode? flashMode) => _$this._flashMode = flashMode;
-
   CameraLensDirection? _currentLensDirection;
   CameraLensDirection? get currentLensDirection => _$this._currentLensDirection;
   set currentLensDirection(CameraLensDirection? currentLensDirection) =>
@@ -129,6 +125,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
   GridMode? get gridMode => _$this._gridMode;
   set gridMode(GridMode? gridMode) => _$this._gridMode = gridMode;
 
+  bool? _isFlashLightOn;
+  bool? get isFlashLightOn => _$this._isFlashLightOn;
+  set isFlashLightOn(bool? isFlashLightOn) =>
+      _$this._isFlashLightOn = isFlashLightOn;
+
   CameraStateBuilder();
 
   CameraStateBuilder get _$this {
@@ -137,11 +138,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
       _status = $v.status;
       _cameraPermissionStatus = $v.cameraPermissionStatus;
       _isCameraInitialized = $v.isCameraInitialized;
-      _flashMode = $v.flashMode;
       _currentLensDirection = $v.currentLensDirection;
       _capturedImage = $v.capturedImage;
       _showDiagnostics = $v.showDiagnostics;
       _gridMode = $v.gridMode;
+      _isFlashLightOn = $v.isFlashLightOn;
       _$v = null;
     }
     return this;
@@ -175,11 +176,6 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
             r'CameraState',
             'isCameraInitialized',
           ),
-          flashMode: BuiltValueNullFieldError.checkNotNull(
-            flashMode,
-            r'CameraState',
-            'flashMode',
-          ),
           currentLensDirection: BuiltValueNullFieldError.checkNotNull(
             currentLensDirection,
             r'CameraState',
@@ -195,6 +191,11 @@ class CameraStateBuilder implements Builder<CameraState, CameraStateBuilder> {
             gridMode,
             r'CameraState',
             'gridMode',
+          ),
+          isFlashLightOn: BuiltValueNullFieldError.checkNotNull(
+            isFlashLightOn,
+            r'CameraState',
+            'isFlashLightOn',
           ),
         );
     replace(_$result);

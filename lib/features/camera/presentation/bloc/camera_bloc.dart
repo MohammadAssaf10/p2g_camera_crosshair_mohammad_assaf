@@ -63,37 +63,6 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
         );
       }
     });
-    on<ToggleCameraFlash>((event, emit) async {
-      if (cameraController == null || !cameraController!.value.isInitialized) {
-        return;
-      }
-      try {
-        FlashMode newFlashMode;
-        switch (state.flashMode) {
-          case FlashMode.off:
-            newFlashMode = FlashMode.auto;
-            break;
-          case FlashMode.auto:
-            newFlashMode = FlashMode.always;
-            break;
-          case FlashMode.always:
-            newFlashMode = FlashMode.off;
-            break;
-          default:
-            newFlashMode = FlashMode.off;
-        }
-        await cameraController!.setFlashMode(newFlashMode);
-        emit(
-          state.rebuild(
-            (b) => b
-              ..flashMode = newFlashMode
-              ..showDiagnostics = false,
-          ),
-        );
-      } catch (e) {
-        debugPrint('Error toggling flash: $e');
-      }
-    });
     on<SwitchCamera>((event, emit) async {
       if (cameraController == null) return;
       try {
@@ -188,6 +157,26 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
             ..showDiagnostics = false,
         ),
       );
+    });
+    on<ToggleFlashLight>((event, emit) {
+      if (cameraController == null || !cameraController!.value.isInitialized) {
+        return;
+      }
+      try {
+        final bool newFlashLightState = !state.isFlashLightOn;
+        cameraController!.setFlashMode(
+          newFlashLightState ? FlashMode.torch : FlashMode.off,
+        );
+        emit(
+          state.rebuild(
+            (b) => b
+              ..isFlashLightOn = newFlashLightState
+              ..showDiagnostics = false,
+          ),
+        );
+      } catch (e) {
+        debugPrint('Error toggling flashlight: $e');
+      }
     });
   }
 
