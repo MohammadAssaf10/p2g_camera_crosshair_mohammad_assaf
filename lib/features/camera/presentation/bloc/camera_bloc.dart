@@ -96,6 +96,11 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
         return;
       }
       try {
+        // Ensure flashlight is off before capturing
+        if (state.isFlashLightOn) {
+          cameraController!.setFlashMode(FlashMode.off);
+        }
+
         // Capture the widget with grid overlay
         final RenderRepaintBoundary? boundary =
             repaintBoundaryKey.currentContext?.findRenderObject()
@@ -121,15 +126,16 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
               state.rebuild(
                 (b) => b
                   ..capturedImage = file
-                  ..showDiagnostics = false,
+                  ..showDiagnostics = false
+                  ..isFlashLightOn = false,
               ),
             );
-            emit(state.rebuild((b) => b..capturedImage = null));
           }
         }
       } catch (e) {
         debugPrint('Error capturing image: $e');
       }
+      emit(state.rebuild((b) => b..capturedImage = null));
     });
     on<ToggleDiagnostics>((event, emit) {
       emit(state.rebuild((b) => b..showDiagnostics = !state.showDiagnostics));
